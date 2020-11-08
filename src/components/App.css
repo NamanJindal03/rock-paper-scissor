@@ -173,16 +173,41 @@ html{
 }
 
 
-
+/* .gg-shape-triangle {
+  position: relative;
+  transform: scale(var(--ggs,1));
+  width: 22px;
+  height: 17px;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid
+}
+.gg-shape-triangle,
+.gg-shape-triangle::before {
+  display: block;
+  box-sizing: border-box;
+  border-right: 3px solid transparent
+}
+.gg-shape-triangle::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-left: 3px solid;
+  border-top: 3px solid;
+  border-bottom: 3px solid transparent;
+  transform: rotate(225deg) skew(-5deg,-5deg);
+  left: -2px;
+  bottom: -13px
+} */
 
 /* Screen 2 - host left to choose */
 .displayMyPickHeader{
   display: flex;
-  flex-direction: column;
-  height: 22rem;
-  margin-top: 7rem;
-  width: 50%;
-  min-width: 550px;
+    flex-direction: column;
+    width: 65%;
+    min-width: 550px;
+    height: 51%;
+    align-items: center;
 
 }
 .displayMyPickTitle{
@@ -202,16 +227,17 @@ html{
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top:3rem;
+    height: 100%;
 }
 .logoSpan2 {
   padding: 4.5rem 4.5rem;
     background-color: white;
     border-radius: 100%;
     position: relative;
-    width: 12%;
+    /* width: 12%; */
     margin-bottom: 50px;
-    text-align: center;
-    line-height: 51px;
+    /* text-align: center; */
+    /* line-height: 51px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,8 +263,12 @@ html{
     background-color: rgb(29,46,73);
     width: 12rem;
     height: 12rem;
+    margin-bottom: 45px;
 }
-
+.winStates, .winStates2{
+  font-size: 50px;
+  font-weight: 700;
+}
 
 
 /* Rules button */
@@ -259,14 +289,35 @@ html{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-.playAgain{
-  padding: 5px 10px;
-  background: white;
-  color: red;
-  font-weight: 600;
+.resultsSection2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.resultsSectionCopy{
+  display: none;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+}
+.playAgain, .playAgain2{
+  padding: 10px 10px;
+    background: white;
+    color: red;
+    font-weight: 600;
+    width: 200px;
+    border-radius: 12px;
+    outline: none;
+    border: none;
 }
 
+.titles{
+  font-size: 24px;
+  font-weight: 600;
+}
 
 
 /* Media Queries */
@@ -287,8 +338,46 @@ html{
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 640px) {
   .displayMyPickHeader{
     margin-top:0px;
+  }
+  .resultsSection2{
+    flex-direction: column-reverse;
+  }
+  .logoSpan2{
+    padding: 2.5rem 2.5rem;
+  }
+  .displayMyPick{
+    height:65%;
+    width:80%;
+    justify-content: space-around;
+  }
+  .resultsSection{
+    display: none;
+  }
+  .resultsSectionCopy{
+    display: flex;
+  }
+  .blankFigure{
+    width: 9rem;
+    height: 9rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .winStates{
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .playAgain{
+    padding: 10px 10px;
+      background: white;
+      color: red;
+      font-weight: 600;
+      width: 150px;
+      border-radius: 12px;
+      outline: none;
+      border: none;
   }
 }

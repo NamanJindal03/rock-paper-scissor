@@ -12,14 +12,17 @@ const App = () => {
   //initialising states using useState hook
   const [values, setValues] = useState({
     rules: false,
-    score: 100,
+    score: 0,
     myPick: "",
     hostPick: "",
     result: false,
     win: -2
   })
   //destructuring states
-  const {rules, score, myPick, hostPick, result, win} = values;
+  const {rules, score,  result, win} = values;
+
+  const [myPick,setMyPick] = useState(null);
+  const [hostPick,setHostPick] = useState(null);
   
   
   const showRulesModal = () =>{
@@ -29,24 +32,12 @@ const App = () => {
     setValues({...values, rules: false})
   }
   const resetGame = () =>{
-    setValues({...values, myPick:"", hostPick: "", result: false, win:-2})
+    setMyPick(null);
+    setHostPick(null)
+    setValues({...values, result: false, win:-2})
   }
 
-  const displayMyAndHost = () =>{
-    return(
-      <section className="displayMyPickHeader">
-        <div className="displayMyPickTitle">
-          <span>YOU PICKED</span>
-          <span>THE HOUSE PICKED</span>
-        </div>
-        <div className="displayMyPick">
-          {returnPlayerFigure(myPick)}
-          {returnPlayerFigure(hostPick)}
-        </div>
-        
-      </section>
-    )
-  }
+  
   const evaluateWin = () =>{
     if(myPick === hostPick){
       return 0;
@@ -58,70 +49,41 @@ const App = () => {
       return -1;
     }
   }
-  const storeScore = async() =>{
-    await localStorage.setItem('score', score);
+  const storeScore = (permanentScore) =>{
+    localStorage.setItem('score', permanentScore);
   }
-  const pickFigure = (event) =>{
-    let figure=event.target.id
-    figure= figure.split('-')[0];
-    console.log(figure);
-
-    //setValues({...values, myPick: figure})
-    setValues((prevState)=>({
-      ...values, 
-      myPick: figure
-    })) 
-    setTimeout(() => {
-      let figureArray = ['rock', 'paper', 'scissor'];
-      let selectedFigure = figureArray[Math.floor(Math.random()*3)];
-      setValues((prevState)=>({
-        ...values, 
-        hostPick: selectedFigure
-      }))
-      /* mainStage = pickHostFigure();  */
-      setTimeout(() => {
-        let ans = evaluateWin();
-        let permanentScore = Number(score) + ans;
-        setValues((prevState) => ({
-          ...values,
-          win: ans,
-          result: true,
-          score: permanentScore
-        }))
-        storeScore();
-      }, 1000);
-
-    }, 1000);
+  const pickFigure = (figure) =>{
+    console.log("my figure", figure)
+    setMyPick(figure)
   }
+
+  
 
   const chooseShape = () => {
     return(
       <section className="chooseShape">
-        <span className="logoSpan" id="paper-logo-span" onClick={pickFigure}>
+        <span className="logoSpan" id="paper-logo-span" onClick={() => pickFigure("paper")}>
           <PaperLogo />
         </span>
-        <span className="logoSpan" id="rock-logo-span" onClick={pickFigure}>
+        <span className="logoSpan" id="rock-logo-span" onClick={() => pickFigure("rock")}>
           <RockLogo />
         </span>
-        <span className="logoSpan" id="scissor-logo-span" onClick={pickFigure}>
+        <span className="logoSpan" id="scissor-logo-span" onClick={() => pickFigure("scissor")}>
           <ScissorLogo />
         </span>
-        {/* <RockLogo />
-        <ScissorLogo /> */}
       </section>
     )
   }
-  const returnPlayerFigure = (Pick) =>{
-    return(Pick === 'rock' ? 
+  const returnPlayerFigure = (pick) =>{
+    return(pick === 'rock' ? 
               <span className="logoSpan2" id="rock-logo-span" >
                 <RockLogo />
               </span> 
             : 
-              (myPick === 'paper' ? 
+              (pick === 'paper' ? 
               <span className="logoSpan2" id="paper-logo-span" >
                 <PaperLogo />
-              </span> 
-              
+              </span>   
               : 
               <span className="logoSpan2" id="scissor-logo-span">
                 <ScissorLogo />
@@ -130,38 +92,71 @@ const App = () => {
   const displayMyPick = () =>{
     return(
       <section className="displayMyPickHeader">
-        <div className="displayMyPickTitle">
-          <span>YOU PICKED</span>
-          <span>THE HOUSE PICKED</span>
-        </div>
         <div className="displayMyPick">
-          {returnPlayerFigure()}
-          <span className="blankFigure"></span> 
+          <div className="resultsSection2">
+            <span className="titles">YOU PICKED</span>
+            {returnPlayerFigure(myPick)}
+          </div>
+          
+          <div className="resultsSection2">
+            <span className="titles">THE HOUSE PICKED</span>
+            <span className="blankFigure"></span> 
+          </div>
         </div>
         
       </section>
     )
   }
+  const displayMyAndHost = () =>{
+    return(
+      <section className="displayMyPickHeader">
+        <div className="displayMyPick">
+          <div className="resultsSection2">
+            <span className="titles">YOU PICKED</span>
+            {returnPlayerFigure(myPick)}
+          </div>
+          
+          <div className="resultsSection2">
+            <span className="titles">THE HOUSE PICKED</span>
+            {returnPlayerFigure(hostPick)}
+          </div>
+        </div>
+        
+      </section>
+    )
+  }
+  
   const displayWinLooseSlide = () =>{
     return(
       <section className="displayMyPickHeader">
-        <div className="displayMyPickTitle">
-          <span>YOU PICKED</span>
-          <span>THE HOUSE PICKED</span>
-        </div>
         <div className="displayMyPick">
-          {returnPlayerFigure(myPick)}
-          <div className="resultsSection">
-
-            {win === 0 ? <h1>Draw</h1> : (win === 1 ? <h1>Win</h1> : <h1>Lose</h1>)}
-            <button className="playAgain" onClick={resetGame}>PLAY AGAIN</button>
+          <div className="resultsSection2">
+            <span className="titles">YOU PICKED</span>
+            {returnPlayerFigure(myPick)}
           </div>
-          {returnPlayerFigure(hostPick)}
+          <div className="resultsSection">
+            {win === 0 ? <span className="winStates">DRAW</span> : (win === 1 ? <span className="winStates">YOU WIN</span> : <span className="winStates">YOU LOSE</span>)}
+            <button className="playAgain" onClick={resetGame} >
+              PLAY AGAIN
+            </button>
+          </div>
+          <div className="resultsSection2">
+            <span className="titles">THE HOUSE PICKED</span>
+            {returnPlayerFigure(hostPick)}
+          </div>
         </div>
-        
+        <div className="resultsSectionCopy">
+        {win === 0 ? <span className="winStates2">DRAW</span> : (win === 1 ? <span className="winStates2">YOU WIN</span> : <span className="winStates2">YOU LOSE</span>)}
+            <button className="playAgain2" onClick={resetGame} >
+              PLAY AGAIN
+            </button>
+          </div>
       </section>
+
     )
   }
+
+  /* Fetches the result from the Local Storage and sets in state */
   const loadInitialResult = async () =>{
     let finalScore;
     let localStorageResult = await localStorage.getItem('score');
@@ -184,10 +179,49 @@ const App = () => {
   }else{
     mainStage = displayWinLooseSlide();
   }
+
+  /* Only gets executed once  */
   useEffect(() =>{
     
     loadInitialResult();
   }, [])
+
+  useEffect(() => {
+    let timerId = null
+    if(myPick){
+      timerId =  setTimeout(() => {
+        const values = ["rock","paper","scissor"];
+        const random = Math.floor(Math.random() * 3);
+        const hostSelection  = values[random];
+        console.log(hostSelection)
+        setHostPick(hostSelection)
+      },1500)
+   }
+    return () => {
+      if(timerId) clearTimeout(timerId)
+    }
+  },[myPick]);
+
+  useEffect(() => {
+    let timerId = null
+    if(hostPick){
+      timerId =  setTimeout(() => {
+        let ans = evaluateWin();
+        let permanentScore = Number(score) + ans;
+        setValues((prevState) => ({
+          ...values,
+          win: ans,
+          result: true,
+          score: permanentScore
+        }))
+        storeScore(permanentScore);
+      }, 1500)
+   }
+    return () => {
+      if(timerId) clearTimeout(timerId)
+    }
+  },[hostPick]);
+
   return (
     <div className="app">
       {/* Conditional rendering the RulesModal according to the state */}

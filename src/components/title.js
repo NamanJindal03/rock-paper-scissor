@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-import {ReactComponent as Logo} from '../images/logo.svg'
 const Title = (props) =>{
     const ScoreCard = () =>{
         return(
