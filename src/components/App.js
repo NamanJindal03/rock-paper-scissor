@@ -53,7 +53,7 @@ const App = () => {
     localStorage.setItem('score', permanentScore);
   }
   const pickFigure = (figure) =>{
-    console.log("my figure", figure)
+    
     setMyPick(figure)
   }
 
@@ -193,7 +193,7 @@ const App = () => {
         const values = ["rock","paper","scissor"];
         const random = Math.floor(Math.random() * 3);
         const hostSelection  = values[random];
-        console.log(hostSelection)
+        
         setHostPick(hostSelection)
       },1500)
    }

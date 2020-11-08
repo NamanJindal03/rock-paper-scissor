@@ -21,7 +21,6 @@ const Title = (props) =>{
             </div>
         )
     }
-    console.log(props.score);
     return(
         <>
             {titleAndScore()}
