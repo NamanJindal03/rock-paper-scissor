@@ -21,23 +21,26 @@ const App = () => {
   //destructuring states
   const {rules, score,  result, win} = values;
 
+  //initialising myPick and hostPick States
   const [myPick,setMyPick] = useState(null);
   const [hostPick,setHostPick] = useState(null);
   
-  
+  //Hides and shows the rules modal
   const showRulesModal = () =>{
     setValues({...values, rules: true})
   }
   const hideRulesModal = () =>{
     setValues({...values, rules: false})
   }
+
+  //Upon clicking playagain resets the game by reseting certain states
   const resetGame = () =>{
     setMyPick(null);
     setHostPick(null)
     setValues({...values, result: false, win:-2})
   }
 
-  
+  //this function checks who won
   const evaluateWin = () =>{
     if(myPick === hostPick){
       return 0;
@@ -49,31 +52,17 @@ const App = () => {
       return -1;
     }
   }
+  //Stores the score in localStorage for persistent storage
   const storeScore = (permanentScore) =>{
     localStorage.setItem('score', permanentScore);
   }
+
+  //sets states for myfigure
   const pickFigure = (figure) =>{
-    
     setMyPick(figure)
   }
 
-  
-
-  const chooseShape = () => {
-    return(
-      <section className="chooseShape">
-        <span className="logoSpan" id="paper-logo-span" onClick={() => pickFigure("paper")}>
-          <PaperLogo />
-        </span>
-        <span className="logoSpan" id="rock-logo-span" onClick={() => pickFigure("rock")}>
-          <RockLogo />
-        </span>
-        <span className="logoSpan" id="scissor-logo-span" onClick={() => pickFigure("scissor")}>
-          <ScissorLogo />
-        </span>
-      </section>
-    )
-  }
+  //depending on the players figures returns the required JSX
   const returnPlayerFigure = (pick) =>{
     return(pick === 'rock' ? 
               <span className="logoSpan2" id="rock-logo-span" >
@@ -89,6 +78,25 @@ const App = () => {
                 <ScissorLogo />
               </span>));
   }
+
+  //iniial setup of choose states
+  const chooseShape = () => {
+    return(
+      <section className="chooseShape">
+        <span className="logoSpan" id="paper-logo-span" onClick={() => pickFigure("paper")}>
+          <PaperLogo />
+        </span>
+        <span className="logoSpan" id="rock-logo-span" onClick={() => pickFigure("rock")}>
+          <RockLogo />
+        </span>
+        <span className="logoSpan" id="scissor-logo-span" onClick={() => pickFigure("scissor")}>
+          <ScissorLogo />
+        </span>
+      </section>
+    )
+  }
+
+  //Implements the screen when we just select our figure
   const displayMyPick = () =>{
     return(
       <section className="displayMyPickHeader">
@@ -107,6 +115,7 @@ const App = () => {
       </section>
     )
   }
+  //implements the screen where we see both host and my figure #screen2
   const displayMyAndHost = () =>{
     return(
       <section className="displayMyPickHeader">
@@ -126,6 +135,7 @@ const App = () => {
     )
   }
   
+  //displays the final slide where we get to see who won that round
   const displayWinLooseSlide = () =>{
     return(
       <section className="displayMyPickHeader">
@@ -186,6 +196,8 @@ const App = () => {
     loadInitialResult();
   }, [])
 
+
+  //when the state of myPick changes it implements a timer to slect the state of host
   useEffect(() => {
     let timerId = null
     if(myPick){
@@ -202,6 +214,7 @@ const App = () => {
     }
   },[myPick]);
 
+  //once figures of both host and person has been set we implement timer to show result
   useEffect(() => {
     let timerId = null
     if(hostPick){
@@ -228,6 +241,8 @@ const App = () => {
       {rules? <RulesModal  hideRulesModal= {hideRulesModal}/> : <> </>}
       {/* Passing score as prop to title component */}
       <Title score={score}/>
+
+      {/* Mainstage has all the screens */}
       {mainStage}
       <button onClick={showRulesModal} className="rulesBtn">Rules</button>
     </div>
