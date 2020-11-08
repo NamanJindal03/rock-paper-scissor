@@ -1,0 +1,294 @@
+html{
+  width:100vw;
+  height:100vh;
+}
+.app{
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  height:100vh;
+  justify-content: space-evenly;
+}
+
+
+/* CSS for title component */
+.titleAndScoreHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 3px solid rgba(255,255,255, 0.4) ;
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem;
+  margin-top: 2rem;
+  width:60%;
+  min-width:300px;
+}
+
+.titleAndScoreHeader > span{
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  width: 30px;
+  font-size: 1.8rem;
+}
+
+.scoreCard{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem 1.8rem;
+  border-radius: 10px;
+}
+
+#score-title{
+  color: rgb(35, 35, 196);
+  font-weight: 700;
+  text-align: center;
+}
+#current-score{
+  color: rgb(82,77,77);
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+/* End of title component CSS */
+
+
+/* Start of Rules Component CSS */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.modal-main {
+  position:fixed;
+  background: white;
+  width: 30%;
+  min-width: 360px;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+.modal-main div{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  
+}
+.modal-main div span{
+  color: rgb(82,77,77);
+  font-weight: 700;
+  font-size: 2rem;
+}
+.close-rules-1{
+  display: block;
+  font-size: 20px;
+  background: none;
+  border: none;
+}
+.close-rules-2{
+  display: none;
+  font-size: 20px;
+  background: none;
+  border: none;
+}
+.close-rules-1:hover, .close-rules-2:hover{
+  background: rgb(93 91 91 / 40%);
+    border-radius: 100%;
+}
+.rules-logo{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* Styling paper, scissors, rock logo */
+.chooseShape{
+  height: 22rem;
+    margin-top: 7rem;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    min-width: 430px;
+}
+.logoSpan {
+  padding: 1.5rem 1.5rem;
+    background-color: white;
+    border-radius: 100%;
+    position: relative;
+    width: 12%;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    line-height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 10px solid;
+    border-image-source: linear-gradient(45deg,hsl(230, 89%, 62%),hsl(230, 89%, 65%));
+    border-image-slice: 40%; */
+}
+
+.logoSpan::after{
+  background: linear-gradient(hsl(230, 89%, 65%), hsl(230, 89%, 60%));
+  border-radius: 100%;
+    content: '';
+    top: -20px;
+    left: -20px;
+    bottom: -20px;
+    right: -20px;
+    position: absolute;
+    z-index:-1;
+}
+
+#rock-logo-span::after{
+  background: linear-gradient(hsl(349, 71%, 56%), hsl(349, 70%, 52%));
+
+}
+
+#scissor-logo-span::after{
+  background: linear-gradient(hsl(39, 89%, 53%),hsl(40, 84%, 49%)),
+              radial-gradient(at 90% 0, hsl(40, 84%, 49%), black);
+  
+}
+#paper-logo-span::after{
+  background: linear-gradient(hsl(230, 89%, 65%), hsl(230, 89%, 60%));
+}
+
+
+
+
+/* Screen 2 - host left to choose */
+.displayMyPickHeader{
+  display: flex;
+  flex-direction: column;
+  height: 22rem;
+  margin-top: 7rem;
+  width: 50%;
+  min-width: 550px;
+
+}
+.displayMyPickTitle{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.displayMyPickTitle span{
+  font-size: 24px;
+  font-weight: 600;
+}
+.displayMyPick{
+  
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top:3rem;
+}
+.logoSpan2 {
+  padding: 4.5rem 4.5rem;
+    background-color: white;
+    border-radius: 100%;
+    position: relative;
+    width: 12%;
+    margin-bottom: 50px;
+    text-align: center;
+    line-height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 10px solid;
+    border-image-source: linear-gradient(45deg,hsl(230, 89%, 62%),hsl(230, 89%, 65%));
+    border-image-slice: 40%; */
+}
+
+.logoSpan2::after{
+  
+  border-radius: 100%;
+    content: '';
+    top: -20px;
+    left: -20px;
+    bottom: -20px;
+    right: -20px;
+    position: absolute;
+    z-index:-1;
+}
+
+.blankFigure{
+  border-radius: 100%;
+    background-color: rgb(29,46,73);
+    width: 12rem;
+    height: 12rem;
+}
+
+
+
+/* Rules button */
+.rulesBtn{
+  
+  float: right;
+  background: transparent;
+  outline: none;
+  padding: 10px 25px;
+  border-radius: 10px;
+  color: white;
+  border:3px solid rgba(255,255,255, 0.4);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.resultsSection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.playAgain{
+  padding: 5px 10px;
+  background: white;
+  color: red;
+  font-weight: 600;
+}
+
+
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+  .modal-main{
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+  }
+  .modal-main div{
+    justify-content: center;
+  }
+  .close-rules-1{
+    display: none;
+  }
+  .close-rules-2{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .displayMyPickHeader{
+    margin-top:0px;
+  }
+}
