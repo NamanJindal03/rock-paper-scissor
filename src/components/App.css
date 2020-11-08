@@ -175,8 +175,7 @@ html{
 }
 
 #scissor-logo-span::after{
-  background: linear-gradient(hsl(39, 89%, 53%),hsl(40, 84%, 49%)),
-              radial-gradient(at 90% 0, hsl(40, 84%, 49%), black);
+  background: linear-gradient(hsl(39, 89%, 53%),hsl(40, 84%, 49%));
   
 }
 #paper-logo-span::after{
@@ -274,7 +273,9 @@ html{
     background-color: rgb(29,46,73);
     width: 12rem;
     height: 12rem;
-    margin-bottom: 45px;
+    margin-bottom: 13px;
+    position: relative;
+    top: -19px;
 }
 .winStates, .winStates2{
   font-size: 50px;
@@ -388,17 +389,22 @@ html{
     height: 164px;
     /* width: 200px; */
 }
+.titleAndScoreHeader{
+  min-width: 250px;
+}
 }
 
 @media screen and (max-width: 640px) {
   .displayMyPickHeader{
     margin-top:0px;
+    min-width: 400px;
   }
   .resultsSection2{
     flex-direction: column-reverse;
+    justify-content: center;
   }
   .logoSpan2{
-    padding: 2.5rem 2.5rem;
+    padding: 1.5rem 1.5rem;
   }
   .displayMyPick{
     height:65%;

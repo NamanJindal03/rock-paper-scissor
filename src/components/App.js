@@ -67,7 +67,7 @@ const App = () => {
   const returnPlayerFigure = (pick) =>{
     return(pick === 'rock' ? 
               <span className="logoSpan2" id="rock-logo-span" >
-                <RockLogo />
+                <RockLogo style={{"height":"56px", "width": "58px", "position": "relative", "left":"2px", "top": "3px"}}/>
               </span> 
             : 
               (pick === 'paper' ? 
