@@ -119,7 +119,7 @@ html{
 /* Styling paper, scissors, rock logo */
 .chooseShape{
   height: 22rem;
-    margin-top: 7rem;
+    
     width: 40%;
     display: flex;
     flex-direction: row;
@@ -127,12 +127,17 @@ html{
     flex-wrap: wrap;
     min-width: 430px;
 }
+.triangleLogo{
+  position:"absolute"; 
+  z-index:"-1"; 
+  margin-top:"35px";
+}
 .logoSpan {
   padding: 1.5rem 1.5rem;
     background-color: white;
     border-radius: 100%;
     position: relative;
-    width: 12%;
+    width: 66px;
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 50px;
@@ -156,6 +161,12 @@ html{
     right: -20px;
     position: absolute;
     z-index:-1;
+}
+.logoSpanCircle{
+  position: absolute;
+  background-color: grey;
+  padding: 20px;
+
 }
 
 #rock-logo-span::after{
@@ -272,6 +283,10 @@ html{
 
 
 /* Rules button */
+.rulesBtnDiv{
+  display: flex;
+  flex-direction: row-reverse;
+}
 .rulesBtn{
   
   float: right;
@@ -283,7 +298,11 @@ html{
   border:3px solid rgba(255,255,255, 0.4);
   font-size: 1rem;
   font-weight: 600;
+  position: absolute;
+    right: 70px;
+    bottom: 70px;
 }
+
 
 .resultsSection{
   display: flex;
@@ -336,6 +355,39 @@ html{
   .close-rules-2{
     display: block;
   }
+  .logoSpan {
+    padding: 1rem 1rem;
+    background-color: white;
+    border-radius: 100%;
+    position: relative;
+    width: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    /* text-align: center; */
+    /* line-height: 51px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chooseShape {
+    height: 16rem;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 430px;
+}
+
+.triangleLogo {
+    position: absolute;
+    z-index: -1;
+    margin-top: 24px;
+    height: 164px;
+    /* width: 200px; */
+}
 }
 
 @media screen and (max-width: 640px) {
@@ -362,6 +414,9 @@ html{
   .blankFigure{
     width: 9rem;
     height: 9rem;
+  }
+  .rulesBtn{
+    position:initial;
   }
 }
 

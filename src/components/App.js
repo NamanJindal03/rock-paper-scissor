@@ -84,8 +84,9 @@ const App = () => {
   const chooseShape = () => {
     return(
       <section className="chooseShape">
-        <TriangleLogo style={{"position":"absolute", "z-index":"-1", "margin-top":"35px"}}/>
+        <TriangleLogo style={{"position":"absolute", "z-index":"-1", "margin-top":"35px","height":"160px"}}/>
         <span className="logoSpan" id="paper-logo-span" onClick={() => pickFigure("paper")}>
+          {/* <span className="logoSpanCircle"> </span> */}
           <PaperLogo />
         </span>
         <span className="logoSpan" id="rock-logo-span" onClick={() => pickFigure("rock")}>
@@ -246,7 +247,10 @@ const App = () => {
 
       {/* Mainstage has all the screens */}
       {mainStage}
-      <button onClick={showRulesModal} className="rulesBtn">Rules</button>
+      <div className="rulesBtnDiv">
+
+        <button onClick={showRulesModal} className="rulesBtn">Rules</button>
+      </div>
     </div>
   );
 }
