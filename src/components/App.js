@@ -7,6 +7,7 @@ import RulesModal from './rules'
 import {ReactComponent as PaperLogo} from '../images/icon-paper.svg'
 import {ReactComponent as ScissorLogo} from '../images/icon-scissors.svg'
 import {ReactComponent as RockLogo} from '../images/icon-rock.svg'
+import {ReactComponent as TriangleLogo} from '../images/bg-triangle.svg'
 
 const App = () => {
   //initialising states using useState hook
@@ -83,6 +84,7 @@ const App = () => {
   const chooseShape = () => {
     return(
       <section className="chooseShape">
+        <TriangleLogo style={{"position":"absolute", "z-index":"-1", "margin-top":"35px"}}/>
         <span className="logoSpan" id="paper-logo-span" onClick={() => pickFigure("paper")}>
           <PaperLogo />
         </span>
