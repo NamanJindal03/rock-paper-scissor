@@ -18,5 +18,5 @@ If you win you score will be incremented by 1 whereas if you loose the score wil
 5. The project is ready to see
 
 ## Important
-1. There is a delibirate 1.5 second delay added between host figure pickup and the declaration of result so as all the screens are visible
+1. There is a deliberate 1.5 second delay added between host figure pickup and the declaration of result so as all the screens are visible
 
