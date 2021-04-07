@@ -10,6 +10,8 @@ You have an option to choose from rock paper or scissors.
 
 If you win you score will be incremented by 1 whereas if you loose the score will decrease by one.
 
+Hosted Link:  https://quiet-gorge-30451.herokuapp.com/
+
 ## Setup
 1. Clone the Repo
 2. Cd into the folder
